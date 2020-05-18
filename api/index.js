@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const orders = require('./routes/orders')
 const plates = require('./routes/plates') // se importa la ruta de plates
 const app = express()
 
@@ -13,5 +14,6 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 
 app.use('/api/platos', plates)//esta es la ruta en el buscador
+app.use('/api/ordenes', orders)
 
 module.exports = app
