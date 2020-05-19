@@ -22,7 +22,7 @@ router.post('/',(req, res) => {//ruta para crear
 
 router.put('/:id', (req, res) => {//router.put =+ metodo para reemplazar/actualizar
     Orders.findByIdAndUpdate(req.params.id, req.body)
-        .then(x => res.status(204).send(x))
+        .then(() => res.sendStatus(204))//.send(x))
 })
 
 router.delete('/:id', (req, res) => {

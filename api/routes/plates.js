@@ -25,8 +25,8 @@ router.put('/:id', (req, res) => {//router.put =+ metodo para reemplazar/actuali
         .then(() => res.sendStatus(204))//.send(x))//se puede devolver el objeto actualizado al user pero hay q cambiar al status 200
 })
 
-router.delete('/:id', (req, res) => {//status 204 significa q no esta devolviendo ningun contenido
+router.delete('/:id', (req, res) => {
     Plates.findOneAndDelete(req.params.id).exec().then(() => res.sendStatus(204))
-})
+})//status 204 significa q no esta devolviendo ningun contenido
 
 module.exports = router
