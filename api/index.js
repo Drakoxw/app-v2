@@ -1,8 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyparser = require('body-parser')
 const orders = require('./routes/orders')
 const plates = require('./routes/plates') // se importa la ruta de plates
 const app = express()
+
+app.use(bodyparser.json())
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 //const Users = mongoose.model('User', new mongoose.Schema({ name: String}))//!er modelo de prueba

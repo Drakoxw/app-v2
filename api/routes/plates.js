@@ -21,11 +21,11 @@ router.post('/',(req, res) => {//ruta para crear elemento
 })
 
 router.put('/:id', (req, res) => {//router.put =+ metodo para reemplazar/actualizar
-    Plates.findByIdAndUpdate(req.body.id, req.body)// el 1er req busca por id y actualiza, el 2do es la actualizacion q hace
-        .then(x => res.status(204).send(x))//status 204 significa q no esta devolviendo ningun contenido
+    Plates.findByIdAndUpdate(req.params.id, req.body)// el 1er req busca por id y actualiza, el 2do es la actualizacion q hace
+        .then(() => res.sendStatus(204))//.send(x))//se puede devolver el objeto actualizado al user pero hay q cambiar al status 200
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {//status 204 significa q no esta devolviendo ningun contenido
     Plates.findOneAndDelete(req.params.id).exec().then(() => res.sendStatus(204))
 })
 
