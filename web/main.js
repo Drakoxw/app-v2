@@ -20,6 +20,29 @@ const renderItem = (item) => {
 }
 
 window.onload = () => {
+    const orderForm = document.getElementById('order')
+    orderForm.onsubmit = (e) => {
+        e.preventDefault()
+        const platoId = document.getElementById('plato-id')
+        const platoIdValue = platoId.value
+        if (!platoIdValue) {
+            alert('Debe seleccionar al menos un plato!')
+            return
+        }
+
+        const order = {
+            meal_id: platoIdValue,
+            user_id: 'pepito',
+        }
+        fetch('https://v3ra.drakoxw.now.sh/api/ordenes',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'aplication/json',
+            },
+            body: JSON.stringify(order)
+        }).then(x => console.log(x))
+    }
+
     fetch('https://v3ra.drakoxw.now.sh/api/platos')
         .then(response => response.json())
         .then(data => {
