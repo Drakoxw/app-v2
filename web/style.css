@@ -25,3 +25,6 @@ ul {
     margin-left: 35px;
     padding: 7px 15px;
 }
+#submit:disabled {
+    background-color: #ccc;
+}
