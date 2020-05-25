@@ -12,6 +12,8 @@ const renderItem = (item) => {
         const platosList = document.getElementById('list-platos')
         Array.from(platosList.children).forEach(x => x.classList.remove('select'))
         element.classList.add('select')
+        const platosIdInput = document.getElementById('plato-id')
+        platosIdInput.value = item._id
     })
 
     return element
