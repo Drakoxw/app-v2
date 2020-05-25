@@ -1,0 +1,9 @@
+body {
+    background-color: #eee;
+    display: flex;
+}
+body div {
+    flex-grow: 1;
+    background-color: #fff;
+    box-shadow: 4 4 4 black;
+}
