@@ -7,6 +7,13 @@ const stringToHTML = (s) => {
 
 const renderItem = (item) => {
     const element = stringToHTML(`<li data-id="${item._id}">${item.name}</li>`)
+
+    element.addEventListener('click', () => {
+        const platosList = document.getElementById('list-platos')
+        Array.from(platosList.children).forEach(x => x.classList.remove('select'))
+        element.classList.add('select')
+    })
+
     return element
 }
 

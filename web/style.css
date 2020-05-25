@@ -28,3 +28,9 @@ ul {
 #submit:disabled {
     background-color: #ccc;
 }
+#list-platos li {
+    cursor: pointer;
+}
+.select {
+    background-color: #eee;
+}
