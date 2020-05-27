@@ -1,3 +1,4 @@
+let platosState = []
 
 const stringToHTML = (s) => {
     const parser = new DOMParser()
@@ -31,6 +32,8 @@ window.onload = () => {
     const orderForm = document.getElementById('order')
     orderForm.onsubmit = (e) => {
         e.preventDefault()
+        const submit = document.getElementById('submit')
+        submit.setAttribute('disabled',true)
         const platoId = document.getElementById('plato-id')
         const platoIdValue = platoId.value
         if (!platoIdValue) {
@@ -48,12 +51,19 @@ window.onload = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(order)
-        }).then(x => console.log(x))
+        }).then(x => x.json())
+            .then(respuesta => {
+                const renderdeOrder = renderOrder(respuesta,platosState )
+                const ordersList = document.getElementById('list-ordenes')
+                ordersList.appendChild(renderdeOrder)
+                submit.removeAttribute('disabled')
+            })
     }
 
     fetch('https://v3ra.drakoxw.now.sh/api/platos',)
         .then(response => response.json())
         .then(data => {
+            platosState = data
             const platosList = document.getElementById('list-platos')
             const submit = document.getElementById('submit')
             const listItems = data.map(renderItem)
