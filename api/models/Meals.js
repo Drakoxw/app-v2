@@ -5,4 +5,5 @@ const Meals = mongoose.model('Meals', new Schema({
     name: String,
     desc: String,
 }))
- module.exports = Meals
+ 
+module.exports = Meals

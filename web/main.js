@@ -60,7 +60,7 @@ window.onload = () => {
             })
     }
 
-    fetch('https://v3ra.drakoxw.now.sh/api/platos',)
+    fetch('https://v3ra.drakoxw.now.sh/api/platos')
         .then(response => response.json())
         .then(data => {
             platosState = data

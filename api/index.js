@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const orders = require('./routes/orders')
 const plates = require('./routes/plates') // se importa la ruta de plates
+const auth = require('./routes/auth')
 const app = express()
 
 app.use(bodyparser.json())
@@ -18,5 +19,6 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 app.use('/api/platos', plates)//esta es la ruta en el buscador
 app.use('/api/ordenes', orders)
+app.use('/api/auth', auth)
 
 module.exports = app
