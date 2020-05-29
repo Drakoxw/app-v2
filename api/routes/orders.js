@@ -1,5 +1,6 @@
 const express = require('express')
 const Orders = require('../models/Orders')
+const isAuthenticated = require('../auth')
 
 const router = express.Router()
 
@@ -15,17 +16,17 @@ router.get('/:id', (req, res) => {//get de elemento único
         .then(x => res.status(200).send(x))
 })
 
-router.post('/',(req, res) => {//ruta para crear
+router.post('/', isAuthenticated, (req, res) => {//ruta para crear
     Orders.create(req.body)
         .then(x => res.status(201).send(x))
 })
 
-router.put('/:id', (req, res) => {//router.put =+ metodo para reemplazar/actualizar
+router.put('/:id', isAuthenticated, (req, res) => {//router.put =+ metodo para reemplazar/actualizar
     Orders.findByIdAndUpdate(req.params.id, req.body)
         .then(x => res.status(204).send(x))
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAuthenticated, (req, res) => {
     Orders.findOneAndDelete(req.params.id).exec().then(() => res.sendStatus(204))
 })
 
