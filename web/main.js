@@ -1,4 +1,5 @@
 let platosState = []
+let ruta = 'login'
 
 const stringToHTML = (s) => {
     const parser = new DOMParser()
@@ -28,7 +29,7 @@ const renderOrder = (order, plato) => {
     return element
 }
 
-window.onload = () => {
+const inicializaForm = () => {
     const orderForm = document.getElementById('order')
     orderForm.onsubmit = (e) => {
         e.preventDefault()
@@ -59,7 +60,8 @@ window.onload = () => {
                 submit.removeAttribute('disabled')
             })
     }
-
+}
+const inicializaDatos = () => {
     fetch('https://v3ra.drakoxw.now.sh/api/platos')
         .then(response => response.json())
         .then(data => {
@@ -82,5 +84,8 @@ window.onload = () => {
                 }) 
         })
 }
-//control..---
-//xsd?¡¡=)
+
+window.onload = () => {
+    inicializaForm()
+    inicializaDatos() 
+}

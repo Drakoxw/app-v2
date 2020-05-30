@@ -5,20 +5,39 @@
     <link rel="stylesheet" href="/web/style.css">
 </head>
 <body>
-    <div id="platos">
-        <ul id="list-platos">
-            <p>Cargando...</p>
-        </ul>
-        <form id="order">
-        <input id="plato-id" type="hidden">
-        <input id="submit" type="submit" disabled>
-    </form>
+    <div class="form-main">
+        <p id="titleF" class="form-title"><b>Inicia sesión</b></p>
+        <form class="form-login">
+            <div>
+                <p>Nombre de usuario</p>
+                <input placeholder="Nombre de usuario">
+            </div>
+            <div>
+                <p>Contraseña</p>
+                <input type="password" placeholder="Contraseña" id="">
+            </div>
+            <div>
+                <button id="btn">Enviar</button>
+            </div>
+            
+        </form>
     </div>
-    <div id="ordenes">
-        <ul id="list-ordenes">
-            <p>Cargando...</p>
-        </ul>
-    </div>
+    <template id="ordenes-view">
+        <div id="platos">
+            <ul id="list-platos">
+                <p>Cargando...</p>
+            </ul>
+            <form id="order">
+            <input id="plato-id" type="hidden">
+            <input class="x" id="submit" type="submit" disabled>
+        </form>
+        </div>
+        <div id="ordenes">
+            <ul id="list-ordenes">
+                <p>Cargando...</p>
+            </ul>
+        </div>
+    </template> 
 </body>
 <script src="/web/main.js"></script>
 </html>

@@ -7,7 +7,7 @@ body div {
     background-color: #fff;
     margin: 5px;
 }
-body div:first-child {
+#platos {
     margin-left: 0px;
 }
 #ordenes {
@@ -16,7 +16,7 @@ body div:first-child {
 ul {
     list-style: none;
 }
-#submit {
+.x {
     background-color: rgb(42, 180, 14);
     color: #fff;
     border: solid 0px;
@@ -24,8 +24,10 @@ ul {
     margin: 15px;
     margin-left: 35px;
     padding: 7px 15px;
+    padding-bottom: 22px;
+    width: 40px;
 }
-#submit:disabled {
+.x:disabled {
     background-color: #ccc;
 }
 #list-platos li {
@@ -33,4 +35,37 @@ ul {
 }
 .select {
     background-color: #eee;
+}
+
+.form-main {
+    margin: auto;
+    max-width: 400px;
+    margin-top: 100px;
+    padding: 15px;
+}
+.form-login {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+form input {
+    width: calc(100% - 10px);
+    height: 24px;
+    padding-left: 5px;
+    background-color: #dedede;
+    border: solid 0px;
+    border-radius: 5px;
+    color: #555;
+}
+#titleF {
+    text-align: center;
+    font-size: 140%;
+}
+#btn {
+    width: calc(100% - 3px);
+    border: solid 0px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #2280cc;
+    border-radius: 5px;
+    margin-top: 15px;
 }
