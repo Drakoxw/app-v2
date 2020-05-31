@@ -86,6 +86,14 @@ const inicializaDatos = () => {
 }
 
 window.onload = () => {
+    fetch('https://v3ra.drakoxw.now.sh/api/auth/register',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: 'uribe@paraco.com', password: '123456' })
+        })
+
     inicializaForm()
     inicializaDatos() 
 }
