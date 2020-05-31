@@ -86,14 +86,18 @@ const inicializaDatos = () => {
 }
 
 window.onload = () => {
-    fetch('https://v3ra.drakoxw.now.sh/api/auth/register',{
+    const loginForm = document.getElementById('form-login')
+    loginForm.onsubmit = (e) => {
+        e.preventDefault()
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+
+        fetch('https://v3ra.drakoxw.now.sh/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: 'uribe@paraco.com', password: '123456' })
+            body: JSON.stringify({ email, password })
         })
-
-    inicializaForm()
-    inicializaDatos() 
+    }
 }
