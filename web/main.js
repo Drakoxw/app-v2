@@ -85,7 +85,18 @@ const inicializaDatos = () => {
         })
 }
 
-window.onload = () => {
+const renderApp = () => {
+    const token = localStorage.getItem('token')
+    if (token) {
+        const ordenesview = document.getElementById('ordenes-view')
+        document.getElementsByTagName('body')[0].innerHTML = ordenesview.innerHTML
+    }
+}
+
+const renderLogin = () => {
+    const loginTemplate = document.getElementById('login-template')
+    document.getElementsByTagName('body')[0].innerHTML = loginTemplate.innerHTML
+
     const loginForm = document.getElementById('form-login')
     loginForm.onsubmit = (e) => {
         e.preventDefault()
@@ -98,6 +109,15 @@ window.onload = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email, password })
-        })
+        }).then(x => x.json())
+            .then(respuesta => {
+                console.log(respuesta)
+                localStorage.setItem('token', respuesta.token)
+                ruta = 'orders'
+            })
     }
+}
+
+window.onload = () => {
+    renderApp()
 }

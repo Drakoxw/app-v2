@@ -5,23 +5,26 @@
     <link rel="stylesheet" href="/web/style.css">
 </head>
 <body>
-    <div class="form-main">
-        <p id="titleF" class="form-title"><b>Inicia sesión</b></p>
-        <form id="form-login" class="form-login">
-            <div>
-                <p>Email de usuario</p>
-                <input id="email" placeholder="Correo electronico">
-            </div>
-            <div>
-                <p>Contraseña</p>
-                <input id="password" type="password" placeholder="Contraseña" id="">
-            </div>
-            <div>
-                <button id="btn">Enviar</button>
-            </div>
-            
-        </form>
-    </div>
+    <template id="login-template">
+        <div class="form-main">
+            <p id="titleF" class="form-title"><b>Inicia sesión</b></p>
+            <form id="form-login" class="form-login">
+                <div>
+                    <p>Email de usuario</p>
+                    <input id="email" placeholder="Correo electronico">
+                </div>
+                <div>
+                    <p>Contraseña</p>
+                    <input id="password" type="password" placeholder="Contraseña" id="">
+                </div>
+                <div>
+                    <button id="btn">Enviar</button>
+                </div>
+                
+            </form>
+        </div>
+    </template>
+    
     <template id="ordenes-view">
         <div id="platos">
             <ul id="list-platos">
