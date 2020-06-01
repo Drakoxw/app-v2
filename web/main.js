@@ -87,18 +87,17 @@ const inicializaDatos = () => {
 
 const renderApp = () => {
     const token = localStorage.getItem('token')
-    console.log('token renderA', token)
+    console.log('token renderApp', token)
     if (token) {
         return renderOrdenes()
     }
-    console.log('el token', token);
     renderLogin()
-    
 }
 
 const renderOrdenes = () => {
     const ordenesView = document.getElementById('ordenesView')
-    document.getElementsByTagName('body')[0].innerHTML = ordenesView.innerHTML
+    document.getElementById('app').innerHTML = ordenesView.innerHTML
+    //document.getElementsByTagName('body')[0].innerHTML = ordenesView.innerHTML
     console.log('ok renderOrdenes')
     inicializaForm()
     inicializaDatos()
@@ -106,7 +105,8 @@ const renderOrdenes = () => {
 
 const renderLogin = () => {
     const loginTemplate = document.getElementById('login-template')
-    document.getElementsByTagName('body')[0].innerHTML = loginTemplate.innerHTML
+    document.getElementById('app').innerHTML = loginTemplate.innerHTML
+    //document.getElementsByTagName('body')[0].innerHTML = loginTemplate.innerHTML
 
     const loginForm = document.getElementById('form-login')
     loginForm.onsubmit = (e) => {

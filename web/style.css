@@ -1,8 +1,11 @@
 body {
     background-color: #eee;
+   
+}
+#app {
     display: flex;
 }
-body div {
+#app div {
     flex-grow: 1;
     background-color: #fff;
     margin: 5px;
@@ -37,13 +40,13 @@ ul {
     background-color: #eee;
 }
 
-.form-main {
+#app .form-main {
     margin: auto;
     max-width: 400px;
     margin-top: 100px;
     padding: 15px;
 }
-.form-login {
+#app .form-login {
     margin-bottom: 5px;
     font-size: 14px;
 }
