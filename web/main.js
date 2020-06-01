@@ -87,10 +87,21 @@ const inicializaDatos = () => {
 
 const renderApp = () => {
     const token = localStorage.getItem('token')
+    console.log('token renderA', token)
     if (token) {
-        const ordenesview = document.getElementById('ordenes-view')
-        document.getElementsByTagName('body')[0].innerHTML = ordenesview.innerHTML
+        return renderOrdenes()
     }
+    console.log('el token', token);
+    renderLogin()
+    
+}
+
+const renderOrdenes = () => {
+    const ordenesView = document.getElementById('ordenesView')
+    document.getElementsByTagName('body')[0].innerHTML = ordenesView.innerHTML
+    console.log('ok renderOrdenes')
+    inicializaForm()
+    inicializaDatos()
 }
 
 const renderLogin = () => {
@@ -111,9 +122,9 @@ const renderLogin = () => {
             body: JSON.stringify({ email, password })
         }).then(x => x.json())
             .then(respuesta => {
-                console.log(respuesta)
                 localStorage.setItem('token', respuesta.token)
                 ruta = 'orders'
+                renderOrdenes()
             })
     }
 }
