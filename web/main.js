@@ -1,4 +1,5 @@
 let platosState = []
+let user = {}
 let ruta = 'login'
 
 const stringToHTML = (s) => {
@@ -39,28 +40,33 @@ const inicializaForm = () => {
         const platoIdValue = platoId.value
         if (!platoIdValue) {
             alert('Debe seleccionar al menos un plato!')
+            submit.removeAttribute('disabled')
             return
         }
 
         const order = {
             meal_id: platoIdValue,
-            user_id: 'pepito',
+            user_id: user.email,  
         }
-        fetch('https://v3ra.drakoxw.now.sh/api/ordenes',{
+
+        console.log(order)
+        fetch('https://v3ra.drakoxw.now.sh/api/ordenes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(order)
-        }).then(x => x.json())
-            .then(respuesta => {
-                const renderdeOrder = renderOrder(respuesta,platosState )
+        })
+            .then(x => x.json())
+            .then(respuesta => {console.log(respuesta)
+                const renderdeOrder = renderOrder(respuesta, platosState)
                 const ordersList = document.getElementById('list-ordenes')
                 ordersList.appendChild(renderdeOrder)
                 submit.removeAttribute('disabled')
             })
     }
 }
+
 const inicializaDatos = () => {
     fetch('https://v3ra.drakoxw.now.sh/api/platos')
         .then(response => response.json())
@@ -89,6 +95,7 @@ const renderApp = () => {
     const token = localStorage.getItem('token')
     console.log('token renderApp', token)
     if (token) {
+        user = JSON.parse(localStorage.getItem('user'))
         return renderOrdenes()
     }
     renderLogin()
@@ -124,8 +131,23 @@ const renderLogin = () => {
             .then(respuesta => {
                 localStorage.setItem('token', respuesta.token)
                 ruta = 'orders'
-                renderOrdenes()
+                return respuesta.token
             })
+                .then(token => {
+                    return fetch('https://v3ra.drakoxw.now.sh/api/auth/me', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            authorization: token,
+                        },
+                    })
+                })
+                    .then(x => x.json())
+                    .then(fetchUser => {
+                        localStorage.setItem('user', JSON.stringify(fetchUser))
+                        user = fetchUser
+                        renderOrdenes()
+                    })
     }
 }
 

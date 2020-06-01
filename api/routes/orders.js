@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {//get de elemento único
         .then(x => res.status(200).send(x))
 })
 
-router.post('/', isAuthenticated, (req, res) => {//ruta para crear
+router.post('/', (req, res) => {//ruta para crear
     Orders.create(req.body)
         .then(x => res.status(201).send(x))
 })
